@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top push-bottom">
+      <a href="#" class="navbar-brand">Dank Projects</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse">
+      <ul class="mr-auto navbar-nav">
+        <li class="nav-item" routerLinkActive="active" ><a  class="nav-link">Recipes</a></li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated"><a [routerLink]="['/login']"  class="nav-link"> Authenticate</a></li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated"><a [routerLink]="['social/analytics']" class="nav-link">Analytics</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button mat-button [matMenuTriggerFor] = "menu" (click)="onParseJwt()"><fa name="bars" size="2x"></fa></button>
+          <mat-menu #menu = "matMenu" class="customize">
+            <a mat-menu-item
+                style="cursor: pointer;"
+                (click)="onLogout()"
+                *ngIf="showLogout">
+                <fa name="folder-open" ></fa>
+                Log out
+              </a>
+            <a mat-menu-item
+                style="cursor: pointer;"
+                (click)="navigateToUser()"
+                *ngIf="isUserAdmin()">
+                <fa name="user"></fa>
+                User
+            </a>
+            <a mat-menu-item
+                style="cursor: pointer;"
+                (click)="navigateToHelpSupport()">
+                <fa name="question-circle" ></fa>
+                Help and Support
+            </a>
+            <a mat-menu-item
+                style="cursor: pointer;"
+                (click)="navigateToSettings()"
+                *ngIf="isUserAdmin()">
+                <fa name="cog" ></fa>
+                Settings
+            </a>
+          </mat-menu>
+
+        </li>
+
+      </ul>
+    </div>
+
+</nav>

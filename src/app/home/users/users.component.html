@@ -1,0 +1,47 @@
+<ul class="list-group">
+
+
+
+
+  <li id="users"
+      class="list-group-item"
+      [ngClass] = "[user.id===-20 ? 'list-group-item-primary':i%2===0 ?'list-group-item-light hovElement':'list-group-item-dark hovElement']"
+      *ngFor="let user of users; let i=index"
+      >
+    <div class="row">
+      <app-alert
+            [message]="deleteUser"
+            [id] = "userId"
+            *ngIf="deleteUser && selectedIndex===i"
+            (close)="onHandleClose()">
+          </app-alert>
+        <div class="col-md-11" (click)="user.id!==-20?onSelectUser(i):''">
+          <div class="row">
+            <div class="col-md-4" >
+              <label>{{user.id===-20 ? 'User name': user.userName}}</label>
+            </div>
+            <div class="col-md-2">
+              <label>{{user.id===-20 ? 'Roles':user.roles.substr(5).toLowerCase()}}</label>
+            </div>
+            <div class="col-md-2">
+              <label>{{user.id===-20 ? 'Active':user.active}}</label>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+          </div>
+
+        </div>
+
+      <div class="col-md-1" *ngIf="user.id!==-20">
+        <a  class="btn-danger btn-lg active"
+            role="button"
+            aria-pressed="true"
+            (click)="onDeleteUser(i)">
+            <fa name="trash"></fa>
+        </a>
+
+      </div>
+    </div>
+  </li>
+</ul>

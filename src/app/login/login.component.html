@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="card">
+      <div class="card-body">
+        <div style="text-align: center;">
+          <div>
+            <img [src]="'assets/images/pxLogo.png'" height="50px" width="50px">
+          </div>
+          <br>
+
+          <label>Please Sign In</label>
+        </div>
+
+        <div *ngIf="errorMessage"  style="text-align: center;" class="alert alert-danger">
+          {{errorMessage}}
+        </div>
+        <div *ngIf="isLoading"  style="text-align: center;">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="center-login" *ngIf="!isLoading">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              ngModel
+              name="username"
+              #username="ngModel"
+              required>
+              <span class="help-block errorColor" *ngIf="!username.valid && username.touched">Bitch please (username missing)</span>
+          </div>
+
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              ngModel
+              name="password"
+              #password="ngModel"
+              required>
+              <span class="help-block errorColor" *ngIf="!password.valid && password.touched">Bitch please (password missing)</span>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="margin-bottom: 10px;">
+              <button
+                class="btn btn-primary btn-block"
+                type="submit"
+                [disabled]= "!loginForm.valid"
+            >
+              {{isLoginMode ? 'Login': 'Sign Up'}}
+              </button>
+            </div>
+
+              <div class="col-md-6" style="margin-bottom: 10px;">
+                <button
+                class="btn btn-primary btn-block"
+                (click)="onSwitchMode()"
+                type="button">
+                  Switch {{isLoginMode ? 'Sign Up' : 'Login' }}
+              </button>
+              </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,15 @@
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+
+.errorColor {
+  color: red;
+}
+
+.center{
+  text-align: center;
+}
+
+.spacing{
+  margin-bottom: 25px;
+}

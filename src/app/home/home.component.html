@@ -1,0 +1,33 @@
+<form #searchForm="ngForm" class="spacing">
+  <div class="row">
+    <div class="col-md-8 input-group">
+      <input
+      type="text"
+      id="search"
+      name="search"
+      class="form-control"
+      [(ngModel)] ="searchText"
+      #search="ngModel"
+      required
+      placeholder="Tweet">
+      <button type="button"
+        class="btn btn-success px-3"
+        [disabled]="!searchForm.valid"
+        (click)="onSearchClick()">
+        <fa name="search" ></fa>
+      </button>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-8" style="text-align: center;">
+      <p *ngIf="search.invalid && search.touched" class="errorColor">Bitch please !!!</p>
+    </div>
+  </div>
+
+</form>
+<div class="row">
+  <div class="col-md-8">
+    <app-tweets [jwt]='jwt'></app-tweets>
+  </div>
+</div>

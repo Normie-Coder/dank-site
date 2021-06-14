@@ -1,0 +1,22 @@
+<ul class="list-group">
+  <li class="list-group-item"
+     [ngClass]="[i%2==0 ? 'list-group-item-light':'list-group-item-dark']"
+     *ngFor="let tweet of tweets; let i=index"
+     (click)="onSelectTweet(i)">
+    <div class="row limitHeight">
+
+      <div class="col-md-3" >
+        <img class="textWrap" src={{tweet.profileImageUrl}} alt="bruh"/>
+        <p class="limitHeightName">{{tweet.name}}</p>
+      </div>
+      <div class="col-md-7">
+        <p>{{tweet.text}}</p>
+      </div>
+      <div class="col-md-2">
+        <p>{{tweet.sentiment}}</p>
+      </div>
+
+    </div>
+
+  </li>
+</ul>

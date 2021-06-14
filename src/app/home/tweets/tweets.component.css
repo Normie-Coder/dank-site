@@ -1,0 +1,21 @@
+.spacing {
+  margin-top: 15px;
+}
+.textWrap {
+  float: left;
+  margin: 5px;
+}
+
+.limitHeightName {
+  max-height: 50px;
+  overflow: hidden;
+}
+
+.limitHeight {
+  max-height: 70px;
+  overflow: hidden;
+}
+
+ul li:hover {
+  border: 0.5px solid lightcoral;
+}
